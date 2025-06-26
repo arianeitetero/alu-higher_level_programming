@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-for i in range(26):
-    char = chr(ord('a') + i)
-    if char != 'q' and char != 'e':
-        print(char, end="")
+for i in range(97, 123):
+    if chr(i) == 'q' or chr(i) == 'e':
+        continue
+    print("{}".format(chr(i)), end="")
