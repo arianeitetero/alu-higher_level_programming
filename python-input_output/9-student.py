@@ -1,15 +1,24 @@
 #!/usr/bin/python3
-""" My class module
-"""
+'''class that makes a student'''
 
 
-class MyClass:
-    """ My class
-    """
+class Student:
+    '''student class'''
+    first_name = None
+    last_name = None
+    age = None
 
-    def __init__(self, name):
-        self.name = name
-        self.number = 0
+    def __init__(self, first_name, last_name, age):
+        '''inits the data needed'''
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-    def __str__(self):
-        return "[MyClass] {} - {:d}".format(self.name, self.number)
+    def to_json(self):
+        '''returns a dict rep of the data'''
+        context = {
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'age': self.age
+        }
+        return context
