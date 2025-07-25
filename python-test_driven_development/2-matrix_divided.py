@@ -1,31 +1,32 @@
 #!/usr/bin/python3
-"""Module for matrix_divided function"""
+'''A function that divs a martix with a number'''
 
 
 def matrix_divided(matrix, div):
-    """Divides all elements of a matrix by div and returns a new matrix
-
-    Args:
-        matrix: list of lists of integers/floats
-        div: int or float
-
-    Raises:
-        TypeError: if matrix or div is invalid
-        ZeroDivisionError: if div is zero
-
-    Returns:
-        new matrix with elements divided and rounded to 2 decimal places
-    """
+    """"A function that divs a martix with a number"""
+    if not isinstance(matrix, (list,)):
+        raise TypeError("matrix must be a matrix "
+                        "(list of lists) of integers/floats")
+    for row in matrix:
+        if type(row) != list:
+            raise TypeError("matrix must be a matrix "
+                            "(list of lists) of integers/floats")
+        for item in row:
+            if not isinstance(item, (int, float)):
+                raise TypeError("matrix must be a matrix"
+                                " (list of lists) of integers/floats")
+    row_size = len(matrix[0])
+    for row in matrix:
+        if len(row) != row_size:
+            raise TypeError("Each row of the matrix must have the same size")
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
-        raise TypeError(
-            "matrix must be a matrix (list of lists) of integers/floats")
-    if any(not all(isinstance(x, (int, float)) for x in row) for row in matrix):
-        raise TypeError(
-            "matrix must be a matrix (list of lists) of integers/floats")
-    if any(len(row) != len(matrix[0]) for row in matrix):
-        raise TypeError("Each row of the matrix must have the same size")
-    return [[round(x / div, 2) for x in row] for row in matrix]
+
+    mat_new = []
+    for i in range(len(matrix)):
+        mat_new.append(list())
+        for j in range(len(matrix[i])):
+            mat_new[i].append(round(matrix[i][j] / div, 2))
+    return mat_new
