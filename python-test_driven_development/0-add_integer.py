@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module for add_integer function"""
 
+
 def add_integer(a, b=98):
     """Add two integers or floats after casting them to integers
 
@@ -38,4 +39,3 @@ def add_integer(a, b=98):
         else:
             b = var
     return a + b
-
